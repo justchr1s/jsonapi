@@ -96,7 +96,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        return false;
+        return $this->update($user, $post);
     }
 
     /**

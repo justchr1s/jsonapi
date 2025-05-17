@@ -1,0 +1,19 @@
+meta {
+  name: Delete
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{BASE_URL}}/api/v1/posts/2
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/vnd.api+json
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}

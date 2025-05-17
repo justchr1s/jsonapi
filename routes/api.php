@@ -13,7 +13,6 @@ Route::get('/user', function (Request $request) {
 
 JsonApiRoute::server('v1')->prefix('v1')->resources(function (ResourceRegistrar $server) {
     $server->resource('posts', JsonApiController::class)
-        ->only('index', 'show', 'store', 'update')
         ->relationships(function (Relationships $relations) {
             $relations->hasOne('author')->readOnly();
             $relations->hasMany('comments')->readOnly();
