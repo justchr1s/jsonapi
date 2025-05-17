@@ -1,17 +1,17 @@
 meta {
-  name: Create
+  name: Update
   type: http
-  seq: 4
+  seq: 5
 }
 
-post {
-  url: {{BASE_URL}}/api/v1/posts?include=author,tags
+patch {
+  url: {{BASE_URL}}/api/v1/posts/2?include=tags
   body: json
   auth: bearer
 }
 
 params:query {
-  include: author,tags
+  include: tags
 }
 
 headers {
@@ -27,15 +27,18 @@ body:json {
   {
     "data": {
       "type": "posts",
+      "id": "2",
       "attributes": {
-        "content": "In our second blog post, you will learn how to create resources using the JSON:API specification.",
-        "publishedAt": null,
-        "slug": "creating-jsonapi-resources",
-        "title": "How to Create JSON:API Resources"
+        "publishedAt": "2024-10-01T18:39:00.000000Z",
+        "title": "How to Create and Update JSON:API Resources"
       },
       "relationships": {
         "tags": {
           "data": [
+            {
+              "type": "tags",
+              "id": "1"
+            },
             {
               "type": "tags",
               "id": "2"

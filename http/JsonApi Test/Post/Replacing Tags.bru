@@ -1,0 +1,31 @@
+meta {
+  name: Replacing Tags
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{BASE_URL}}/api/v1/posts/2/relationships/tags
+  body: json
+  auth: bearer
+}
+
+headers {
+  Accept: application/vnd.api+json
+  Content-Type: application/vnd.api+json
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {
+    "data": [
+      {
+        "type": "tags",
+        "id": "1"
+      }
+    ]
+  }
+}

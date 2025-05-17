@@ -5,13 +5,13 @@ meta {
 }
 
 get {
-  url: {{BASE_URL}}/api/v1/posts/1?include=author,comments.user
+  url: {{BASE_URL}}/api/v1/posts/2?include=author,comments.user,tags
   body: none
   auth: inherit
 }
 
 params:query {
-  include: author,comments.user
+  include: author,comments.user,tags
 }
 
 headers {

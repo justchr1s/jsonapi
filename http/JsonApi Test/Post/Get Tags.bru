@@ -1,0 +1,15 @@
+meta {
+  name: Get Tags
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{BASE_URL}}/api/v1/posts/2/tags
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/vnd.api+json
+}
