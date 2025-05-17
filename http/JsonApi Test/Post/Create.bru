@@ -1,0 +1,48 @@
+meta {
+  name: Create
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{BASE_URL}}/api/v1/posts?include=author,tags
+  body: json
+  auth: bearer
+}
+
+params:query {
+  include: author,tags
+}
+
+headers {
+  Accept: application/vnd.api+json
+  Content-Type: application/vnd.api+json
+}
+
+auth:bearer {
+  token: {{TOKEN}}
+}
+
+body:json {
+  {
+    "data": {
+      "type": "posts",
+      "attributes": {
+        "content": "In our second blog post, you will learn how to create resources using the JSON:API specification.",
+        "publishedAt": null,
+        "slug": "creating-jsonapi-resources",
+        "title": "How to Create JSON:API Resources"
+      },
+      "relationships": {
+        "tags": {
+          "data": [
+            {
+              "type": "tags",
+              "id": "2"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
