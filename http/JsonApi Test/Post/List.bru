@@ -5,9 +5,23 @@ meta {
 }
 
 get {
-  url: {{BASE_URL}}/api/v1/posts
+  url: {{BASE_URL}}/api/v1/posts?fields[posts]=author,publishedAt,title&fields[users]=name&include=author&page[number]=1&page[size]=5&sort=-publishedAt
   body: none
   auth: inherit
+}
+
+params:query {
+  fields[posts]: author,publishedAt,title
+  fields[users]: name
+  include: author
+  page[number]: 1
+  page[size]: 5
+  sort: -publishedAt
+  ~filter[author][]: 1
+  ~filter[author][]: 3
+  ~filter[id][]: 1
+  ~filter[id][]: 3
+  ~filter[id][]: 6
 }
 
 headers {
