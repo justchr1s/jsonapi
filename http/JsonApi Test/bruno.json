@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "JsonApi Test",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
