@@ -28,6 +28,30 @@ class PostPolicy
     }
 
     /**
+     * Determine whether the user can view the post's author.
+     */
+    public function viewAuthor(?User $user, Post $post): bool
+    {
+        return $this->view($user, $post);
+    }
+
+    /**
+     * Determine whether the user can view the post's comments.
+     */
+    public function viewComments(?User $user, Post $post): bool
+    {
+        return $this->view($user, $post);
+    }
+
+    /**
+     * Determine whether the user can view the post's tags.
+     */
+    public function viewTags(?User $user, Post $post): bool
+    {
+        return $this->view($user, $post);
+    }
+
+    /**
      * Determine whether the user can create models.
      */
     public function create(User $user): bool

@@ -5,9 +5,13 @@ meta {
 }
 
 get {
-  url: {{BASE_URL}}/api/v1/posts/1
+  url: {{BASE_URL}}/api/v1/posts/1?include=author,comments.user
   body: none
   auth: inherit
+}
+
+params:query {
+  include: author,comments.user
 }
 
 headers {

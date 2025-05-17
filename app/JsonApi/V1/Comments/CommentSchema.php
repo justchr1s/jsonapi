@@ -1,30 +1,23 @@
 <?php
 
-namespace App\JsonApi\V1\Posts;
+namespace App\JsonApi\V1\Comments;
 
-use App\Models\Post;
+use App\Models\Comment;
 use LaravelJsonApi\Eloquent\Contracts\Paginator;
 use LaravelJsonApi\Eloquent\Fields\DateTime;
 use LaravelJsonApi\Eloquent\Fields\ID;
 use LaravelJsonApi\Eloquent\Fields\Relations\BelongsTo;
-use LaravelJsonApi\Eloquent\Fields\Relations\BelongsToMany;
-use LaravelJsonApi\Eloquent\Fields\Relations\HasMany;
 use LaravelJsonApi\Eloquent\Fields\Str;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
 
-class PostSchema extends Schema
+class CommentSchema extends Schema
 {
     /**
      * The model the schema corresponds to.
      */
-    public static string $model = Post::class;
-
-    /**
-     * The maximum include path depth.
-     */
-    protected int $maxDepth = 3;
+    public static string $model = Comment::class;
 
     /**
      * Get the resource fields.
@@ -35,13 +28,7 @@ class PostSchema extends Schema
             ID::make(),
 
             Str::make('content'),
-            DateTime::make('publishedAt')->sortable(),
-            Str::make('slug'),
-            Str::make('title')->sortable(),
-
-            BelongsTo::make('author')->type('users')->readOnly(),
-            HasMany::make('comments')->readOnly(),
-            BelongsToMany::make('tags'),
+            BelongsTo::make('user')->readOnly(),
 
             DateTime::make('createdAt')->sortable()->readOnly(),
             DateTime::make('updatedAt')->sortable()->readOnly(),

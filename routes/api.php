@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use LaravelJsonApi\Laravel\Facades\JsonApiRoute;
 use LaravelJsonApi\Laravel\Http\Controllers\JsonApiController;
+use LaravelJsonApi\Laravel\Routing\Relationships;
 use LaravelJsonApi\Laravel\Routing\ResourceRegistrar;
 
 Route::get('/user', function (Request $request) {
@@ -11,5 +12,12 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 JsonApiRoute::server('v1')->prefix('v1')->resources(function (ResourceRegistrar $server) {
-    $server->resource('posts', JsonApiController::class)->readOnly();
+    $server->resource('posts', JsonApiController::class)
+        ->readOnly()
+        ->relationships(function (Relationships $relations) {
+            $relations->hasOne('author')->readOnly();
+            $relations->hasMany('comments')->readOnly();
+            $relations->hasMany('tags')->readOnly();
+        });
+
 });
